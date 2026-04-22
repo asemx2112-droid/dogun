@@ -87,12 +87,14 @@
             visibility: hidden;
         }
 
-        .door-wrapper.open {
-            pointer-events: none;
-            transition: 2s;
-            opacity: 0;
-            visibility: hidden;
-        }
+		.door-wrapper.open {
+		  pointer-events: none;
+  		  opacity: 0;
+  		  visibility: hidden;
+  		  transition: opacity 1s ease 1.8s; /* fade after doors finish */
+		}
+
+
 
         /* --- خلفية الورود (مثل التصميم الأصلي) --- */
         .floral-bg {
