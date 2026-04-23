@@ -89,13 +89,19 @@
 		.door-wrapper.open {
 	 	   pointer-events: none;
 		}
+		<script>
+		document.querySelector('.door-wrapper').addEventListener('click', function() {
+ 		 this.classList.add('open');              // start rotation
+ 		 setTimeout(() => this.classList.add('fade-out'), 1800); // fade after 1.8s
+		});
+		</script>
 
 	/* Optional: fade out wrapper AFTER doors finish */
-	.door-wrapper.fade-out {
- 	   opacity: 0;
- 	   visibility: hidden;
- 	   transition: opacity 1s ease 1.8s; /* delay matches door rotation */
-	}
+		.door-wrapper.fade-out {
+ 		   opacity: 0;
+ 		   visibility: hidden;
+ 	 	  transition: opacity 1s ease 1.8s; /* delay matches door rotation */
+		}
 
 
 
