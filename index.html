@@ -12,7 +12,8 @@
             --gold: #c2a36b;
             --purple: #9b7eb1;
             --soft-bg: #fdfcfd;
-            --door-color: #ffffff;
+            --door-color: rgba(155, 126, 177, 0.15); /* translucent purple */
+;
         }
 
 	body,
@@ -28,73 +29,37 @@
    	 background: url("background.jpeg") no-repeat center center fixed;
    	 background-size: cover;
 	}
-<style>
-.door-wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2000;
-    perspective: 2000px;
-    display: flex;
-    background-color: #fcfaf5;
-}
 
-.door {
-    width: 50%;
-    height: 100%;
-    background: var(--door-color);
-    position: absolute;
-    transition: transform 1.8s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    border: 1px solid #eee;
-    z-index: 2001;
-}
+        /* --- نظام الباب الرقمي --- */
+        .door-wrapper {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1000; perspective: 2000px; display: flex;
+            background-color: #f0f0f0;
+        }
+        .door {
+            width: 50%; height: 100%; background: var(--door-color);
+            position: absolute; transition: transform 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex; justify-content: center; align-items: center;
+            cursor: pointer; border: 1px solid #eee; z-index: 1001;
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.05);
+        }
+        .door-right { right: 0; transform-origin: right; border-left: 2.5px double var(--purple); }
+        .door-left { left: 0; transform-origin: left; border-right: 2.5px double var(--purple); }
+        
+        .door-letter {
+            font-family: 'Reem Kufi', sans-serif; font-size: 7rem;
+            color: var(--purple); text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
 
-.door-right {
-    right: 0;
-    transform-origin: right;
-    border-left: 2.5px double var(--gold);
-}
+        .door-wrapper.open .door-right { transform: rotateY(-120deg); opacity: 0.8; }
+        .door-wrapper.open .door-left { transform: rotateY(120deg); opacity: 0.8; }
+        .door-wrapper.open { pointer-events: none; transition: 2s; opacity: 0; visibility: hidden; }
 
-.door-left {
-    left: 0;
-    transform-origin: left;
-    border-right: 2.5px double var(--gold);
-}
-
-.door-wrapper.open .door-right {
-    transform: rotateY(-120deg);
-}
-
-.door-wrapper.open .door-left {
-    transform: rotateY(120deg);
-}
-
-/* Don’t hide wrapper immediately */
-.door-wrapper.open {
-    pointer-events: none;
-}
-
-/* Fade out wrapper AFTER doors finish */
-.door-wrapper.fade-out {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 1s ease 1.8s; /* delay matches door rotation */
-}
-</style>
-
-<script>
-document.querySelector('.door-wrapper').addEventListener('click', function() {
-  this.classList.add('open');              // start rotation
-  setTimeout(() => this.classList.add('fade-out'), 1800); // fade after rotation
-});
-</script>
-
+        .open-hint {
+            position: absolute; bottom: 15%; width: 100%; text-align: center;
+            color: var(--purple); font-size: 1.2rem; z-index: 1002;
+            animation: pulse 2s infinite;
+        }
         /* --- خلفية الورود (مثل التصميم الأصلي) --- */
         .floral-bg {
             position: fixed;
@@ -145,7 +110,7 @@ document.querySelector('.door-wrapper').addEventListener('click', function() {
         }
 
 	.main-card {
-  	  background: rgba(255, 255, 255, 0.1); /* more transparent */
+  	  background: rgba(255, 255, 255, 0.15); /* more transparent */
    	 backdrop-filter: blur(10px);
  	   -webkit-backdrop-filter: blur(10px);
 
@@ -187,12 +152,10 @@ document.querySelector('.door-wrapper').addEventListener('click', function() {
             gap: 15px;
         }
 
-		.rings-icon {
-		    width: 90px;   /* adjust as needed */
- 		   height: auto;
-		}
-
-
+        .rings-icon {
+            width: 55px;
+            opacity: 0.8;
+        }
 
         .blessing {
             color: var(--purple);
@@ -306,7 +269,7 @@ document.querySelector('.door-wrapper').addEventListener('click', function() {
             <div class="quran-verse">وَخَلَقْنَاكُمْ أَزْواجاً</div>
 
             <div style="display: flex; justify-content: space-around; margin: 20px 0;">
-                <div class="parents-info">حرم الدكتور<br><strong>خالد طعمة</strong></div>
+                <div class="parents-info">حرم الدكتور<br><strong>خالد طعمة</strong><br><strong>رحمه الله</strong></div>
                 <div class="parents-info">حرم المهندس<br><strong>محمد ربيع أشمر</strong></div>
             </div>
 
@@ -314,7 +277,7 @@ document.querySelector('.door-wrapper').addEventListener('click', function() {
 
             <div class="couple-names">
                 <div><small style="font-size: 1rem; display: block; color: var(--gold);">الدكتور</small>عاصم</div>
-                <img src="rings.jpeg" class="rings-icon" alt="rings">
+                <img src="https://cdn-icons-png.flaticon.com/512/655/655707.png" class="rings-icon" alt="rings">
                 <div><small style="font-size: 1rem; display: block; color: var(--gold);">الدكتورة</small>بتول</div>
             </div>
 
