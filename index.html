@@ -75,24 +75,28 @@
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
         }
 
-        .door-wrapper.open .door-right {
-            transform: rotateY(-120deg);
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .door-wrapper.open .door-left {
-            transform: rotateY(120deg);
-            opacity: 0;
-            visibility: hidden;
-        }
-
-		.door-wrapper.open {
-		  pointer-events: none;
-  		  opacity: 0;
-  		  visibility: hidden;
-  		  transition: opacity 1s ease 3.8s; /* fade after doors finish */
+		.door-wrapper.open .door-right {
+		   transform: rotateY(-120deg);
+  		   transition: transform 1.8s cubic-bezier(0.4, 0, 0.2, 1);
 		}
+
+		.door-wrapper.open .door-left {
+   		   transform: rotateY(120deg);
+  		   transition: transform 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+		}
+
+	/* Don’t hide the wrapper immediately */
+		.door-wrapper.open {
+	 	   pointer-events: none;
+		}
+
+	/* Optional: fade out wrapper AFTER doors finish */
+	.door-wrapper.fade-out {
+ 	   opacity: 0;
+ 	   visibility: hidden;
+ 	   transition: opacity 1s ease 1.8s; /* delay matches door rotation */
+	}
+
 
 
 
