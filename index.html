@@ -76,18 +76,18 @@
         }
 
 		.door-wrapper.open .door-right {
-		   transform: rotateY(-120deg);
-  		   transition: transform 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+			transform: rotateY(-120deg);
+			transition: transform 1.8s cubic-bezier(0.4, 0, 0.2, 1);
 		}
 
 		.door-wrapper.open .door-left {
-   		   transform: rotateY(120deg);
-  		   transition: transform 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+			transform: rotateY(120deg);
+			transition: transform 1.8s cubic-bezier(0.4, 0, 0.2, 1);
 		}
 
 	/* Don’t hide the wrapper immediately */
 		.door-wrapper.open {
-	 	   pointer-events: none;
+			pointer-events: none;
 		}
 		<script>
 		document.querySelector('.door-wrapper').addEventListener('click', function() {
@@ -98,9 +98,9 @@
 
 	/* Optional: fade out wrapper AFTER doors finish */
 		.door-wrapper.fade-out {
- 		   opacity: 0;
- 		   visibility: hidden;
- 	 	  transition: opacity 1s ease 1.8s; /* delay matches door rotation */
+			opacity: 0;
+			visibility: hidden;
+			transition: opacity 1s ease 1.8s; /* delay matches door rotation */
 		}
 
 
@@ -341,7 +341,7 @@
                 </div>
                 <div style="width: 1px; height: 50px; background: #eee;"></div>
                 <div class="detail-item">
-                    <div>الساعة</div><strong>7:30 م</strong>
+                    <div>الساعة</div><strong>7:00 م</strong>
                 </div>
             </div>
 
