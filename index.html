@@ -28,83 +28,72 @@
    	 background: url("background.jpeg") no-repeat center center fixed;
    	 background-size: cover;
 	}
+<style>
+.door-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    perspective: 2000px;
+    display: flex;
+    background-color: #fcfaf5;
+}
 
-        /* --- نظام الباب الرقمي --- */
-        .door-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2000;
-            perspective: 2000px;
-            display: flex;
-            background-color: #fcfaf5;
-        }
+.door {
+    width: 50%;
+    height: 100%;
+    background: var(--door-color);
+    position: absolute;
+    transition: transform 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #eee;
+    z-index: 2001;
+}
 
-        .door {
-            width: 50%;
-            height: 100%;
-            background: var(--door-color);
-            position: absolute;
-            transition: transform 1.8s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            border: 1px solid #eee;
-            z-index: 2001;
-        }
+.door-right {
+    right: 0;
+    transform-origin: right;
+    border-left: 2.5px double var(--gold);
+}
 
-        .door-right {
-            right: 0;
-            transform-origin: right;
-            border-left: 2.5px double var(--gold);
-        }
+.door-left {
+    left: 0;
+    transform-origin: left;
+    border-right: 2.5px double var(--gold);
+}
 
-        .door-left {
-            left: 0;
-            transform-origin: left;
-            border-right: 2.5px double var(--gold);
-        }
+.door-wrapper.open .door-right {
+    transform: rotateY(-120deg);
+}
 
-        .door-letter {
-            font-family: 'Reem Kufi', sans-serif;
-            font-size: 7rem;
-            color: var(--gold);
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-        }
+.door-wrapper.open .door-left {
+    transform: rotateY(120deg);
+}
 
-		.door-wrapper.open .door-right {
-			transform: rotateY(-120deg);
-			transition: transform 1.8s cubic-bezier(0.4, 0, 0.2, 1);
-		}
+/* Don’t hide wrapper immediately */
+.door-wrapper.open {
+    pointer-events: none;
+}
 
-		.door-wrapper.open .door-left {
-			transform: rotateY(120deg);
-			transition: transform 1.8s cubic-bezier(0.4, 0, 0.2, 1);
-		}
+/* Fade out wrapper AFTER doors finish */
+.door-wrapper.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease 1.8s; /* delay matches door rotation */
+}
+</style>
 
-	/* Don’t hide the wrapper immediately */
-		.door-wrapper.open {
-			pointer-events: none;
-		}
-		<script>
-		document.querySelector('.door-wrapper').addEventListener('click', function() {
- 		 this.classList.add('open');              // start rotation
- 		 setTimeout(() => this.classList.add('fade-out'), 1800); // fade after 1.8s
-		});
-		</script>
-
-	/* Optional: fade out wrapper AFTER doors finish */
-		.door-wrapper.fade-out {
-			opacity: 0;
-			visibility: hidden;
-			transition: opacity 1s ease 1.8s; /* delay matches door rotation */
-		}
-
-
-
+<script>
+document.querySelector('.door-wrapper').addEventListener('click', function() {
+  this.classList.add('open');              // start rotation
+  setTimeout(() => this.classList.add('fade-out'), 1800); // fade after rotation
+});
+</script>
 
         /* --- خلفية الورود (مثل التصميم الأصلي) --- */
         .floral-bg {
